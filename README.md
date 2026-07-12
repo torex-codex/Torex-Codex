@@ -27,7 +27,7 @@ You thought ESP-NOW was broken? No. Your understanding of low-level networking i
 
 True mastery means whispers that reach exactly who needs to hear. Not a megaphoned circus. Look at the timestamps from a cold boot on an ESP32-C3 sensor node using this architecture:
 
-<img width="1266" height="422" alt="deepsleep" src="https://github.com/user-attachments/assets/c898e056-c5e1-4faa-8367-8dedd6c4c4c3" />
+![68ms](docs/68ms.png)
 
 **68 milliseconds.** From absolute zero to data delivered and power down. No Wi-Fi handshake lag. No channel drift. Just pure, unadulterated efficiency.
 
@@ -43,12 +43,12 @@ We do not whisper to the air; we command it. Torex operates at the absolute ceil
 The internet is full of theorists and tutorial-copiers. I don't deal in theory. Here are the three visual proofs that separate the King's architecture from the hobbyist's garbage.
 
 ### 1. Raw Binary. No Parsing. No Waste.
-<img width="1266" height="472" alt="deepsleep_v2_2" src="https://github.com/user-attachments/assets/67b8cb4f-11aa-4fbb-8fa4-94e7559af1bf" />
+![1. Raw Binary](docs/1.RawBinary.png)
 
 We do not speak JSON. We do not speak XML. We do not speak human. We speak machine. Our data is structured binary, parsed directly into memory without a single cycle of interpretation. There is no 'cost' because there is no 'process.' To parse is to admit complexity. We are simple. We are direct. We are efficient. Your CPU does not 'work' for us; it simply *accepts* us. We do not burden your system. We liberate it from the tyranny of overhead. This is not optimization. This is purity.
 
 ### 2. No Handshake. No Delay. No Mercy. (The 500Hz Benchmark)
-<img width="1540" height="448" alt="2  No Handshake  No Delay  No Mercy  (The 500Hz Benchmark)" src="https://github.com/user-attachments/assets/1ea3de63-f08c-46de-8e42-d532b8af0f68" />
+![2.NoHandshake.NoDelay](docs/2.NoHandshake.NoDelay.png)
 
 While inferior networks waste precious seconds begging for permission via DHCP and TLS handshakes, Torex ignores the queue. We do not 'reconnect.' We simply *are*. Our Layer-2 integration is continuous, stateful, and instantaneous. To wait for a signal is to admit weakness. We do not wait. We dominate the spectrum without pause.
 
@@ -64,7 +64,7 @@ The radio wave is literally outrunning the physical USB copper wire. By the time
 *(Note: To prevent your PC from crashing under this barrage, the distributed `torex_tx_template.ino` is safely leashed to a 1000ms delay. Lower it to `delay(2)` if you want to witness the absolute maximum hardware clearance limit (500Hz) of the ESP32 MAC layer).*
 
 ### 3. The Zero-Cost Pipeline (Full-Stack Completion)
-<img width="853" height="495" alt="deepsleep_v2_3" src="https://github.com/user-attachments/assets/0a3f18e0-677e-4929-acb7-72fd1bb3efca" />
+![3.TheZero-CostPipeline](docs/3.TheZero-CostPipeline.png)
 
 Hobbyists are satisfied when they see text on an Arduino monitor. The King is only satisfied when the backend pipeline is complete. 
 This PowerShell console is the final destination. As the `[Parsed]` prefix shows, we do not waste CPU cycles on string `split()` or heavy Regex. The OS serial buffer is expanded to 64KB, and Python's `struct.unpack` reconstructs the raw binary from the airwaves instantly at zero computational cost. Even if your transmitter blasts 500 packets per second, they will align perfectly without a single corrupted byte. Can your intellect keep up with this speed?
@@ -99,8 +99,8 @@ The King solves this at the hardware layer. By spending an extra $5 on a second 
 *   **Chip B (Gateway)**: Standard Wi-Fi station mode. Bridges the data to your Home Assistant via MQTT without ever disturbing the ESP-NOW airwaves.
 
 ### Visual Proof: The Seamless MQTT Bridge
-<img width="725" height="586" alt="MQTT1" src="https://github.com/user-attachments/assets/ea5762ec-1ab2-4c7f-a3fc-28c61b69a57e" />
-<img width="1273" height="1032" alt="MQTT2" src="https://github.com/user-attachments/assets/e1603a79-05e2-479e-8bc6-d14354765e90" />
+![MQTT1](docs/MQTT1.png)
+![MQTT2](docs/MQTT2.png)
 
 **Look at the timestamps.** The exact millisecond the Grandmaster receives the encrypted ESP-NOW payload, the Gateway fires the JSON over standard Wi-Fi to the MQTT broker. Absolute silicon-level isolation means zero thread starvation and zero missed packets. One chip for encrypted RF survival. One chip for network routing. Perfection.
 
@@ -108,7 +108,7 @@ The King solves this at the hardware layer. By spending an extra $5 on a second 
 
 ## 🏰 Advanced Application: The 17 Knights Survival Core
 
-<img width="725" height="1032" alt="17knights" src="https://github.com/user-attachments/assets/8f648a01-af81-48ba-b6a9-c99385bcbb62" />
+![17knights](docs/17knights.png)
 
 We do not hardcode MAC addresses like amateurs. Our nodes use a proximity **'Ritual'** to dynamically pair within 10cm, instantly saving to non-volatile storage (NVS). But we don't stop there. 
 
