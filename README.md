@@ -1,4 +1,4 @@
-![TOREX4-2](https://github.com/user-attachments/assets/2ba30f94-3784-45dc-a2db-2340fb5adbe3)
+![TOREX4-2](docs/TOREX4-2.png)
 
 # ⚖️ Torex Codex: The Masterclass in Stealth Architecture
 
