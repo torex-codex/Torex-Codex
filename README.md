@@ -166,20 +166,28 @@ Go forth, configure your army, and post your deployment logs. Show me that your 
 
 ## 🏛️ Accessing the Archives (The Early Vanguard Privilege)
 
-The rightful tax for this industrial-grade wireless infrastructure blueprint is **$299**. 
+The rightful tax for this industrial-grade wireless infrastructure blueprint is **$299**.
 
 However, it is only natural for a King to grant mercy to those who possess the swift intellect to discover this repository early. For the first wave of engineers who found this court, I am granting an **Early Access Price of $150**. 
 
-Consider this $149 discount my Noblesse Oblige—a small blessing to fund your hardware exploration. Once the initial deployment logs are satisfied, the window of mercy will snap shut, and the price will automatically ascend to its rightful position at $299. 
+Consider this $149 discount my Noblesse Oblige—a small blessing to fund your hardware exploration. Once the initial deployment logs are satisfied, the window of mercy will snap shut, and the price will automatically ascend to its rightful position at $299.
 
 If your hourly value cannot comprehend the savings of a 1-millisecond hardware-secure wireless masterclass for under $200, leave immediately and quietly. Your silence is your admission.
 
-### 🏁 Claim Your Blueprint Instantly:
-Select your preferred imperial treasury below to execute the zero-cost shortcut. Payment is handled securely via encrypted global processors.
+### 📦 Exact Product Details & What's Included:
+- **Product Name:** Torex Codex: The Masterclass in Stealth Architecture (Total Infrastructure Package)
+- **Included Assets:** Complete Source Code (Transmitters, Receivers, PC Integration scripts, 17 Knights Survival Core, MQTT Empire Bridge) and the TOREX_ULTIMATE_GUIDE.md optimization manual.
+- **Delivery Method:** Immediate digital download (.zip archive) automatically delivered via email upon successful transaction completion.
 
-* 💳 **[Claim the Early Access Blueprint via Official Landing Page ($150)](https://[YOUR_DOMAIN_HERE])**
+### 🏁 Claim Your Blueprint Instantly:
+Select your preferred imperial treasury below to execute the zero-cost shortcut. Payment is handled securely via encrypted global processors. 
+
+*(Note: Taxes may apply depending on your jurisdiction and will be calculated automatically at checkout.)*
+
+- 💳 **[Claim the Early Access Blueprint via Official Landing Page ($150.00 USD)](https://your-paddle-checkout-link-here)**
 
 (Notice: The checkout link is currently pointing to the Sandbox environment for Paddle's compliance review. Upon approval of our live account, this will be immediately updated to the production link.)
+
 
 ---
 
