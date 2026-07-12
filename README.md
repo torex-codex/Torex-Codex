@@ -179,6 +179,8 @@ Select your preferred imperial treasury below to execute the zero-cost shortcut.
 
 * 💳 **[Claim the Early Access Blueprint via Official Landing Page ($150)](https://[YOUR_DOMAIN_HERE])**
 
+(Notice: The checkout link is currently pointing to the Sandbox environment for Paddle's compliance review. Upon approval of our live account, this will be immediately updated to the production link.)
+
 ---
 
 *“Show me what you can do.”*
