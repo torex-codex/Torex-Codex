@@ -11,6 +11,8 @@ The same sub-millisecond, zero-latency 2.4GHz wireless technology that powers to
 * **Strictly Isolated Architecture.** ESP-NOW encrypted nodes and the MQTT Gateway operate on physically separated hardware. No cross-protocol contamination.
 You attempted to build a secured network and blindly accepted defeat because you trusted official hardware limitations. Your understanding of low-level networking is what is broken.
 The full architectural breakdown, visual proofs of supremacy, and the 17 Knights Survival Core blueprint are documented in the official archives.
+
+
 👉 **[Access the Full Codex and Early Vanguard Blueprint](https://torex-codex.github.io/Torex-Codex/)**
 
 ---
