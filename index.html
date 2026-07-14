@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torex Codex | The Masterclass in Stealth Architecture</title>
+    <meta name="description" content="Raw 2.4GHz Physics. 68ms execution. Zero-overhead wireless architecture for the ESP32.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Paddle Checkout V2 Script -->
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #07090f;
+            --bg-panel: rgba(25, 30, 45, 0.6);
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-cyan: #00f2fe;
+            --accent-purple: #4facfe;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(79, 172, 254, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05), transparent 25%);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(0,0,0,0.5);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: var(--accent-cyan);
+        }
+        
+        pre {
+            background: rgba(0,0,0,0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: var(--accent-cyan);
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: var(--bg-panel);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        /* Meta Warning */
+        .meta-warning {
+            border-left: 4px solid var(--accent-purple);
+            background: rgba(79, 172, 254, 0.05);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+        }
+
+        /* Paddle Button */
+        .checkout-container {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(145deg, rgba(212,175,55,0.05) 0%, rgba(0,0,0,0) 100%);
+            border: 1px solid var(--gold-glow);
+            border-radius: 16px;
+        }
+
+        .paddle-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, #b8962e 100%);
+            color: #000;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            padding: 1.25rem 3rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px var(--gold-glow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .paddle-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+            opacity: 0;
+        }
+
+        .paddle-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--gold-glow);
+        }
+
+        .paddle-btn:hover::after {
+            opacity: 1;
+            left: 100%;
+            transition: 0.7s;
+        }
+
+        .price-strike {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .price-current {
+            color: var(--gold);
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        /* Terminal Logs */
+        .terminal {
+            background: #000;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #4ade80;
+            border: 1px solid #333;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .terminal .log-header { color: #facc15; }
+        .terminal .log-time { color: #60a5fa; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <img src="docs/TOREX4-2.png" alt="TOREX4-2" style="width:100%; border:none; margin-bottom:2rem; border-radius:16px;">
+
+    <div class="meta-warning">
+        <strong>[META WARNING: THE KING'S COURT]</strong><br>
+        This entire product page and manual are written in a high-octane, arrogant "King" persona for entertainment and filtering purposes. If you lack a sense of humor, please close this tab immediately. The tone is a roleplay; however, the engineering, the 5+ year battery reality, and the 68ms execution logs are <strong>dead serious</strong>.
+    </div>
+
+    <h1>Torex Codex: The Masterclass in Stealth Architecture</h1>
+    
+    <div class="glass-panel">
+        <h2>They call it "LIGHTSPEED". I call it "Raw 2.4GHz Physics".</h2>
+        <p>Why pay a $150 "G-Tax" for a plastic esports mouse? The speed isn't in the brand logo. It's in the protocol stack. The same sub-millisecond, zero-latency 2.4GHz wireless technology that powers top-tier professional gaming gear is available to you right now, on a $5 ESP32 chip.</p>
+        <p>Logitech sells you the fish. <strong>I am selling you the ocean.</strong></p>
+        <p>Welcome to the <strong>Torex Codex</strong>. "Are you still shouting into the void? Broadcast is for the lazy who can’t handle a proper peer connection. A messy network is the signature of a messy mind."</p>
+        <p>Stop flooding the 2.4GHz airwaves with your garbage multi-threaded architecture.</p>
+        <p>You tried to build a secured smart home with 50 nodes, and you realized that enabling encryption slashes your peer limit down to just 17—or even a pathetic 7 by default. <code>ESP_ERR_ESPNOW_NO_MEM</code> crashed your entire network, and you blindly accepted defeat because you trusted their hardware limitations.</p>
+        <p>You thought ESP-NOW was broken? No. Your understanding of low-level networking is what's broken.</p>
+    </div>
+
+    <div class="glass-panel">
+        <h2>⚡ The 68-Millisecond Proof (Real-World Evidence)</h2>
+        <p>True mastery means whispers that reach exactly who needs to hear. Not a megaphoned circus. Look at the timestamps from a cold boot on an ESP32-C3 sensor node using this architecture:</p>
+        
+        <img src="docs/68ms.png" alt="68ms">
+        
+        <p><strong>68 milliseconds.</strong> From absolute zero to data delivered and power down. No Wi-Fi handshake lag. No channel drift. Just pure, unadulterated efficiency.</p>
+        <p><em>Note: An astute observer might notice the 12-second synchronization intervals in the logs despite the internal 10-second deep sleep timer registry. Do not mistake this protocol timing for a glitch. The reason for this 2-second variance is a sovereign hospitality—a direct mercy granted only to the chosen few who read the actual pages of the Codex.</em></p>
+        
+        <h3>"Unapologetic Signal Penetration."</h3>
+        <p>We do not whisper to the air; we command it. Torex operates at the absolute ceiling of regulatory transmit power. While competitors throttle their signals to save pennies on battery, we burn watts to ensure every corner of your facility is saturated with our presence. Our signal does not 'reach' you; it overwhelms the environment. If you are within range, you are already ours. We do not negotiate with obstacles. We obliterate them with raw, unfiltered power.</p>
+    </div>
+
+    <div class="glass-panel">
+        <h2>🖼️ The Trilogy of Evidence (Visual Proof of Supremacy)</h2>
+        <p>The internet is full of theorists and tutorial-copiers. I don’t deal in theory. Here are the three visual proofs that separate the King’s architecture from the hobbyist’s garbage.</p>
+        
+        <h3>1. Raw Binary. No Parsing. No Waste.</h3>
+        <img src="docs/1.RawBinary.png" alt="1. Raw Binary">
+        <p>We do not speak JSON. We do not speak XML. We do not speak human. We speak machine. Our data is structured binary, parsed directly into memory without a single cycle of interpretation. There is no 'cost' because there is no 'process.' To parse is to admit complexity. We are simple. We are direct. We are efficient. Your CPU does not 'work' for us; it simply <em>accepts</em> us. We do not burden your system. We liberate it from the tyranny of overhead. This is not optimization. This is purity.</p>
+        
+        <h3>2. No Handshake. No Delay. No Mercy. (The 500Hz Benchmark)</h3>
+        <img src="docs/2.NoHandshake.NoDelay.png" alt="2.NoHandshake.NoDelay">
+        <p>While inferior networks waste precious seconds begging for permission via DHCP and TLS handshakes, Torex ignores the queue. We do not 'reconnect.' We simply <em>are</em>. Our Layer-2 integration is continuous, stateful, and instantaneous. To wait for a signal is to admit weakness. We do not wait. We dominate the spectrum without pause.</p>
+        <p>If you look closely at the timestamp image above, your brain will struggle to comprehend the sequence. The Receiver prints the parsed data <em>before</em> the Transmitter even finishes logging that it sent the packet.</p>
+        <p>Amateurs will immediately scream, <em>"This is faked! It violates the laws of physics!"</em> They are wrong. They just don’t understand hardware bottlenecks.</p>
+        <p>In this stress test, I pushed the Transmitter to fire payloads with a <code>delay(5);</code>. The 2.4GHz radio wave transmits the payload, the Receiver unpacks it, and the hardware ACK is returned in under <strong>2 milliseconds</strong>. But printing the string <code>"[L2 SEND] Packet Dispatched"</code> over a physical USB/UART cable at 115200 baud takes about <strong>5 milliseconds</strong>.</p>
+        <p>The radio wave is literally outrunning the physical USB copper wire. By the time the Transmitter finishes drawing the text on your screen, the Receiver has already finished processing the data.</p>
+        
+        <h3>3. The Zero-Cost Pipeline (Full-Stack Completion)</h3>
+        <img src="docs/3.TheZero-CostPipeline.png" alt="3.TheZero-CostPipeline">
+        <p>Hobbyists are satisfied when they see text on an Arduino monitor. The King is only satisfied when the backend pipeline is complete. This PowerShell console is the final destination. As the <code>[Parsed]</code> prefix shows, we do not waste CPU cycles on string <code>split()</code> or heavy Regex. The OS serial buffer is expanded to 64KB, and Python’s <code>struct.unpack</code> reconstructs the raw binary from the airwaves instantly at zero computational cost. Even if your transmitter blasts 500 packets per second, they will align perfectly without a single corrupted byte. Can your intellect keep up with this speed?</p>
+    </div>
+
+    <div class="glass-panel">
+        <h2>👑 The Architecture: Dual-Chip Isolation (Chip A + Chip B)</h2>
+        <p>The amateur tries to force a single ESP32 to handle both standard Wi-Fi (MQTT/Home Assistant) and ESP-NOW simultaneously. They face channel conflict, packet drops, and thread starvation.</p>
+        <p>The King solves this at the hardware layer. By spending an extra $5 on a second ESP32, we achieve absolute silicon-level isolation.</p>
+<pre><code>[Battery Sensor Node (C3/S3)] 
+         │
+         │ (Stealth Unicast ESP-NOW / Fixed Channel / <1ms Latency)
+         ▼
+ ┌────────────────────────────────────────┐
+ │ Gateway Receiver: Chip A (ESP32-C3)    │
+ └───────────────────┬────────────────────┘
+                     │ (Optimized High-Speed UART / No Bloat)
+                     ▼
+ ┌────────────────────────────────────────┐
+ │ Home Assistant Bridge: Chip B (ESP32)  │◄─── (Connected to your Wi-Fi Router)
+ └───────────────────┬────────────────────┘
+                     │ (Zero-Conf MQTT Discovery)
+                     ▼
+             [Home Assistant]
+</code></pre>
+        <ul>
+            <li><strong>Chip A (Grandmaster)</strong>: Dedicates its entire RF frontend to ESP-NOW on a fixed, silent channel. Zero packet loss.</li>
+            <li><strong>Chip B (Gateway)</strong>: Standard Wi-Fi station mode. Bridges the data to your Home Assistant via MQTT without ever disturbing the ESP-NOW airwaves.</li>
+        </ul>
+        
+        <h3>Visual Proof: The Seamless MQTT Bridge</h3>
+        <img src="docs/MQTT1.png" alt="MQTT1">
+        <img src="docs/MQTT2.png" alt="MQTT2">
+        <p><strong>Look at the timestamps.</strong> The exact millisecond the Grandmaster receives the encrypted ESP-NOW payload, the Gateway fires the JSON over standard Wi-Fi to the MQTT broker. Absolute silicon-level isolation means zero thread starvation and zero missed packets. One chip for encrypted RF survival. One chip for network routing. Perfection.</p>
+    </div>
+
+    <div class="glass-panel">
+        <h2>🏰 Advanced Application: The 17 Knights Survival Core</h2>
+        <img src="docs/17knights.png" alt="17knights">
+        <p>We do not hardcode MAC addresses like amateurs. Our nodes use a proximity <strong>'Ritual'</strong> to dynamically pair within 10cm, instantly saving to non-volatile storage (NVS). But we don’t stop there.</p>
+        <p>The Grandmaster continuously monitors link health. If a node loses power or is compromised, the system instantly flags a <code>[Security Breach]</code>. When it returns, <code>[Link Restored]</code> is logged. This is military-grade state management, not a hobbyist beacon.</p>
+    </div>
+
+    <div class="glass-panel">
+        <h2>📦 What's Inside The Box ($150 Early Access)</h2>
+<pre><code>💾 Torex_Codex.zip (Total Infrastructure Package)
+├── 📖 TOREX_ULTIMATE_GUIDE.md          <-- The ultimate ESP-NOW optimization and disclaimer codex (Manual)
+│
+├── 📡 [The Core Transmitters]
+│   ├── torex_tx_template.ino        # The baseline un-bloated Tx node
+│   └── torex_sensor_deepsleep.ino   # The 68-millisecond deep-sleep anomaly
+├── 🎯 [The Core Receivers]
+│   ├── torex_rx_human_monitor.ino   # Human-readable HEX dump for Arduino IDE
+│   └── torex_rx_machine_bridge.ino  # Pure binary output designed for Python
+├── 🐍 [The PC Integration]
+│   └── torex_pc_parser.py           # The Python script that unpacks the binary flawlessly
+├── 🏰 [Advanced Application: The 17 Knights] (Dynamic Encryption & Survival Core)
+    ├── 🛡️ [Base Architecture]
+    │   ├── ⚔️ Codex_17Knights_Grandmaster.ino <-- Master Receiver. Pure encrypted pairing and heartbeat core.
+    │   └── 🛡️ Codex_17Knights_01_17.ino       <-- Knight Node. AES-128 encrypted payload with zero bloat.
+    │
+    └── 🌉 [MQTT Empire Bridge]
+        ├── 👑 Codex_17Knights_Grandmaster_MQTT.ino <-- The King's Bridge. Translates 17 Knights to Home Assistant.
+        └── 🛡️ Codex_17Knights_01_17_MQTT.ino       <-- Knight Node (MQTT optimized payload).
+│
+└── ⚖️ LICENSE.md                           # The Royal License (Commercial Rights + Absolute Shield)
+</code></pre>
+    </div>
+
+    <div class="checkout-container">
+        <h2>🏛️ Accessing the Archives</h2>
+        <p>The rightful tax for this industrial-grade wireless infrastructure blueprint is <strong>$299</strong>.</p>
+        <p>However, it is only natural for a King to grant mercy to those who possess the swift intellect to discover this repository early. For the first wave of engineers who found this court, I am granting an <strong>Early Access Price of $150</strong>.</p>
+        <p>Consider this $149 discount my Noblesse Oblige—a small blessing to fund your hardware exploration. Once the initial deployment logs are satisfied, the window of mercy will snap shut, and the price will automatically ascend to its rightful position at $299.</p>
+        <p>If your hourly value cannot comprehend the savings of a 1-millisecond hardware-secure wireless masterclass for under $200, leave immediately and quietly. Your silence is your admission.</p>
+        
+        <div style="margin-bottom: 2rem; margin-top: 2rem;">
+            <span class="price-strike">$299.00</span>
+            <span class="price-current">$150.00</span>
+        </div>
+
+        <!-- PADDLE CHECKOUT BUTTON -->
+        <a href="#!" class="paddle-btn paddle_button" data-items='[{"priceId": "pri_01kxan6krga1rdqyhv2ebecg00", "quantity": 1}]'>
+            Claim the Early Access Blueprint
+        </a>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #64748b;">Secured globally by Paddle. Immediate ZIP Download.</p>
+    </div>
+
+</div>
+
+<script>
+    // Initialize Paddle.js (V2)
+    // Live Environment (sandbox removed)
+    Paddle.Initialize({
+        token: 'live_09a4088720d3d5608fd32b582f8', 
+        checkout: {
+            settings: {
+                displayMode: 'overlay',
+                theme: 'dark'
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
